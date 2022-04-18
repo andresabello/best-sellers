@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="col-xl-3">
-                            <button class="btn btn-success w-50 mt-4">Search</button>
+                            <button class="btn btn-primary w-50 mt-4">Search</button>
                             <button class="btn btn-danger w-25 mt-4 ms-2" type="reset" @click="reset">Reset</button>
                         </div>
                     </div>
@@ -80,6 +80,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-4 offset-xl-4 text-center">
+                    <h4>Page # {{ this.currentPage }}</h4>
+                    <button class="btn btn-primary" @click="loadMore"> Next Page</button>
+                </div>
             </div>
         </div>
 
@@ -102,6 +106,7 @@ export default {
                 }
             ],
             totalResults: 0,
+            currentPage: 1
         }
     },
     watch: {
@@ -136,6 +141,9 @@ export default {
             if (this.ISBN.length > 9) {
                 params.append('isbn', this.ISBN)
             }
+
+            let total = parseInt(this.currentPage) * 20
+            params.append('offset', total.toString())
 
             axios.get('api/1/nyt/best-sellers', {
                 params
@@ -173,6 +181,11 @@ export default {
             }
 
             this.getBooks()
+        },
+        loadMore() {
+            this.currentPage++
+            this.getBooks()
+            window.scrollTo({top: 0, behavior: 'smooth'})
         }
     }
 }
