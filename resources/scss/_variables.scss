@@ -1,0 +1,52 @@
+$black: #13171f;
+$black-bis: hsl(0, 0%, 7%);
+$black-ter: hsl(0, 0%, 14%);
+
+
+$white-ter: hsl(0, 0%, 96%);
+$white-bis: hsl(0, 0%, 98%);
+$white: #ffffff;
+
+$orange: #f0997d;
+$yellow: hsl(48, 100%, 67%);
+$green: #85F06D;
+$turquoise: hsl(171, 100%, 41%);
+$blue: #4d7ca5;
+$purple: #1d1d3c;
+$light-purple: #313165;
+$red: #f06d85;
+
+$gray-100: #e3e3e3;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+$dark: $purple;
+$primary: $purple;
+$danger: $red;
+$light: $gray-100;
+
+$primary-invert: $white-ter;
+
+$primary-text-color: $dark;
+$secondary-text-color: $primary;
+$pink: hsl(0, 100%, 85%);
+
+$font-family-sans-serif: Helvetica, sans-serif;
+$family-primary: $font-family-sans-serif;
+
+$button-border: lighten($gray-500, 25) !default;
+$button-hover-border: lighten($gray-500, 30) !default;
+
+$pagination-border: lighten($gray-500, 25) !default;
+$pagination-hover-border: lighten($gray-500, 30) !default;
+
+$dashboard-font-color: $gray-500;
+
+$breadcrumb-bg: transparent;
+$headings-font-weight: 800;
