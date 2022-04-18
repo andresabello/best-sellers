@@ -2,7 +2,7 @@
     <div class="books">
         <div class="container">
             <div class="filters">
-                <form @submit.prevent="getBooks">
+                <form @submit.prevent="formSearch">
                     <div class="row">
                         <div class="col-xl-3">
                             <div class="form-group">
@@ -80,8 +80,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 offset-xl-4 text-center">
-                    <h4>Page # {{ this.currentPage }}</h4>
+                <div class="col-xl-4 offset-xl-4 text-center" v-if="books.length >= 20 && books[0].title !== ''">
+                    <h4>Page # {{ this.currentPage + 1}}</h4>
                     <button class="btn btn-primary" @click="loadMore"> Next Page</button>
                 </div>
             </div>
@@ -106,7 +106,7 @@ export default {
                 }
             ],
             totalResults: 0,
-            currentPage: 1
+            currentPage: 0
         }
     },
     watch: {
@@ -142,7 +142,7 @@ export default {
                 params.append('isbn', this.ISBN)
             }
 
-            let total = parseInt(this.currentPage) * 20
+            let total = this.currentPage * 20
             params.append('offset', total.toString())
 
             axios.get('api/1/nyt/best-sellers', {
@@ -186,6 +186,10 @@ export default {
             this.currentPage++
             this.getBooks()
             window.scrollTo({top: 0, behavior: 'smooth'})
+        },
+        formSearch() {
+            this.currentPage = 0
+            this.getBooks()
         }
     }
 }
